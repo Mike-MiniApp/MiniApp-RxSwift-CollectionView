@@ -9,7 +9,7 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, RxCollectionViewDataSourceType {
+final class CollectionViewDataSource: NSObject, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, RxCollectionViewDataSourceType {
 
     typealias Element = [Sample]
     var itemArray: [Sample] = []
@@ -32,6 +32,4 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, RxCo
         }
         .on(observedEvent)
     }
-
-
 }

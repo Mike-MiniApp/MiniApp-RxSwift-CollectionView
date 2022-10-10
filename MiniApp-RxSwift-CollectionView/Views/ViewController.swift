@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       setupBindings()
+        setupBindings()
         setupCollectionView()
     }
 
@@ -28,9 +28,18 @@ class ViewController: UIViewController {
     }
 
     private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.layer.cornerRadius = 10
         collectionView.register(UINib(nibName: SampleCollectionViewCell.nibName, bundle: nil), forCellWithReuseIdentifier: SampleCollectionViewCell.identifier)
     }
+}
 
-
+// MARK: UICollectionViewDelegateFlowLayout
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let width = collectionView.bounds.width
+            let cellWidth = (width - 30) / 3 // compute your cell width
+            return CGSize(width: cellWidth, height: cellWidth / 0.6)
+    }
 }
 
